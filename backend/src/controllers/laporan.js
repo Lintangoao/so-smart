@@ -1,7 +1,6 @@
 const { Laporan } = require('../../db/models');
 const { User } = require('../../db/models');
 const { Op } = require('sequelize');
-const { lap } = require('.');
 
 module.exports = {
     getLaporan: async(req, res, next) => {
