@@ -1,6 +1,25 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 
 const Userlist = () => {
+    const [users, setUser] = useState([]);
+
+    useEffect(()=> {
+        getUsers();
+    }, []);
+
+    const getUsers = async () => {
+        const response = await axios.get("http://localhost:5000/users");
+       setUser(response.data);
+    }
+    const deleteUser = async(id) => {
+        try {
+            await axios.delete(`http://localhost:5000/users/${id}`);
+            getUsers();
+        } catch(err) {
+            console.log(err);
+        }
+    }
   return (
     <div>
         <h1 className='title'>Users</h1>
@@ -11,18 +30,28 @@ const Userlist = () => {
                     <th>No</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>NIK</th>
+                    <th>Alamat</th>
+                    <th>Jenis Kelamin</th>
                     <th>Role</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                {users.map((user, index) => (
+                <tr key={user.id}>
+                    <td>{index + 1}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.nik}</td>
+                    <td>{user.address}</td>
+                    <td>{user.gender}</td>
+                    <td>{user.role}</td>
+                    <td>
+                        <button onClick={()=> deleteUser(user.id)} className="button is-small is-danger">Hapus</button>
+                    </td>
                 </tr>
+                ))}
             </tbody>
         </table>
     </div>

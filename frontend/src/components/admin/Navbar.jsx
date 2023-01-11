@@ -1,13 +1,12 @@
 import React from 'react'
 import {NavLink, useNavigate} from 'react-router-dom'
-import logo from "../logo.png"
-import { useDispatch, useSelector } from 'react-redux';
-import { LogOut, reset } from "../features/authSlice";
+import logo from "../../logo.png"
+import { useDispatch} from 'react-redux';
+import { LogOut, reset } from "../../features/authSlice";
 
 const Navbar = () => {
     const dispacth = useDispatch();
     const navigate = useNavigate();
-    const { user } = useSelector((state) => state.auth);
 
     const logout = () => {
         dispacth(LogOut());
@@ -30,8 +29,6 @@ const Navbar = () => {
           </div>
         
           <div id="navbarBasicExample" className="navbar-menu">
-
-          {user && user.role === "user" && (
                 <div className="navbar-start">
                 <NavLink className="navbar-item">
                   Beranda
@@ -56,8 +53,7 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-            )}
-        
+       
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="buttons">

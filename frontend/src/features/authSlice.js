@@ -38,7 +38,7 @@ export const getWhoami = createAsyncThunk("user/getWhoami", async(_, thunkAPI) =
 
 export const LogOut = createAsyncThunk("user/LogOut", async() => {
     await axios.delete('http://localhost:5000/auth/logout');
-})
+});
 
 export const authSlice = createSlice({
     name: "auth",
@@ -47,6 +47,7 @@ export const authSlice = createSlice({
         reset: (state) => initialState
     },
     extraReducers: (builder) => {
+        //login
         builder.addCase(LoginUser.pending, (state) => {
             state.isLoading = true;
         });
@@ -78,6 +79,7 @@ export const authSlice = createSlice({
         })
     }
 });
+
 
 export const {reset} = authSlice.actions;
 export default authSlice.reducer;

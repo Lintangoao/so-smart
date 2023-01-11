@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react'
-import Layout from './Layout'
-import Userlist from '../components/Userlist'
+import Layout from '../admin/Layout'
+import Laporanlist from '../../components/laporan/Laporanlist'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getWhoami } from "../features/authSlice";
+import { getWhoami } from "../../features/authSlice";
 
-const Users = () => {
+const Laporan = () => {
     const dispacth = useDispatch();
     const navigate = useNavigate();
-    const {isError, user} = useSelector((state => state.auth));
+    const {isError} = useSelector((state => state.auth));
 
     useEffect(()=> {
         dispacth(getWhoami());
@@ -18,15 +18,12 @@ const Users = () => {
         if (isError) {
             navigate("/")
         }
-        if (user &  user.role !== "admin") {
-            navigate("/dashboard");
-        }
-    }, [isError, user, navigate]);
+    }, [isError, navigate]);
   return (
     <Layout>
-        <Userlist />
+        <Laporanlist />
     </Layout>
   )
 }
 
-export default Users
+export default Laporan

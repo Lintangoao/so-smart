@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react'
-import Layout from './Layout'
-import FormEditUser from '../components/FormEditUser'
+import Layout from '../admin/Layout'
+import FormEditUser from '../../components/user/FormEditUser'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getWhoami } from "../features/authSlice";
+import { getWhoami } from "../../features/authSlice";
 
 const EditUser = () => {
     const dispacth = useDispatch();

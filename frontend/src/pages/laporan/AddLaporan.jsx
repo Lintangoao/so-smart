@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react'
-import Layout from './Layout'
-import Laporanlist from '../components/Laporanlist'
+import FormAddLaporan from '../../components/user/FormAddLaporan/FormAddLaporan';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getWhoami } from "../features/authSlice";
+import { getWhoami } from "../../features/authSlice";
 
-const Laporan = () => {
+const AddLaporan = () => {
     const dispacth = useDispatch();
     const navigate = useNavigate();
     const {isError} = useSelector((state => state.auth));
@@ -20,10 +19,8 @@ const Laporan = () => {
         }
     }, [isError, navigate]);
   return (
-    <Layout>
-        <Laporanlist />
-    </Layout>
+    <FormAddLaporan/>
   )
 }
 
-export default Laporan
+export default AddLaporan

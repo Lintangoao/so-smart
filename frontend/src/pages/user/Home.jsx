@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react'
-import Layout from './Layout'
-import FormAddLaporan from '../components/FormAddLaporan'
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { getWhoami } from "../features/authSlice";
+import LayoutUser from './LayoutUser';
+import Welcome from './Welcome';
+import {useNavigate} from 'react-router-dom'
+import { useSelector, useDispatch} from 'react-redux';
+import { getWhoami} from "../../features/authSlice";
 
-const AddLaporan = () => {
+const Home = () => {
     const dispacth = useDispatch();
     const navigate = useNavigate();
     const {isError} = useSelector((state => state.auth));
@@ -19,11 +19,10 @@ const AddLaporan = () => {
             navigate("/")
         }
     }, [isError, navigate]);
+
   return (
-    <Layout>
-        <FormAddLaporan />
-    </Layout>
+    <LayoutUser><Welcome/></LayoutUser>
   )
 }
 
-export default AddLaporan
+export default Home

@@ -31,17 +31,11 @@ module.exports = {
     },
     getById: async(req, res, next) => {
         try {
-            const permohonan = await Permohonan.findOne({ where: {id: req.params.id }})
-            if (!permohonan){
-                return res.status(404).json({
-                    message: "Data tidak ditemukan"
-                })
-            }
             let response;
             if(req.role === "admin"){
                 response = await Permohonan.findOne({
-                    where :{
-                        userId: permohonan.id
+                    where: {
+                        id: req.params.id 
                     },
                     attributes: {exclude: ["createdAt","updatedAt"]},
                     include:[{
@@ -50,15 +44,20 @@ module.exports = {
                     }]
                 })
             }else{
-                response = await Permohonan.findOne({ 
+                response = await Permohonan.findAll({ 
                     where :{
-                        [Op.and]:[{ id: permohonan.id}, {userId: req.userId}]
+                        id: req.params.id, userId: req.userId
                     },
                     attributes: {exclude: ["createdAt","updatedAt"]},
                     include:[{
                         model: User,
                         attributes: ['uuid','name', 'nik', 'address', 'gender']
                     }]
+                })
+            }
+            if (!response){
+                return res.status(404).json({
+                    message: "Data tidak ditemukan"
                 })
             }
             return res.status(200).json(response);

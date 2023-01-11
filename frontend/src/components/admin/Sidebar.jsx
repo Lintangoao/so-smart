@@ -1,13 +1,12 @@
 import React from 'react'
 import {NavLink, useNavigate} from 'react-router-dom';
 import {IoPerson, IoHome, IoLogOut, IoNewspaper} from "react-icons/io5";
-import { useDispatch, useSelector } from 'react-redux';
-import { LogOut, reset } from "../features/authSlice";
+import { useDispatch} from 'react-redux';
+import { LogOut, reset } from "../../features/authSlice";
 
 const Sidebar = () => {
     const dispacth = useDispatch();
     const navigate = useNavigate();
-    const { user } = useSelector((state) => state.auth);
 
     const logout = () => {
         dispacth(LogOut());
@@ -16,10 +15,8 @@ const Sidebar = () => {
     };
 
     return (
-        
         <div>
-            {user && user.role === "admin" && (
-                <aside className="menu pl-2 has-shadow">
+            <aside className="menu pl-2 has-shadow">
                 <p className="menu-label">
                     General
                 </p>
@@ -46,9 +43,7 @@ const Sidebar = () => {
                     </li>
                     
                 </ul>
-                </aside>
-            )}
-
+            </aside>
         </div>
     )
 }

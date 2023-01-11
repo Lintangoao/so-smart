@@ -1,9 +1,9 @@
 import React , {useEffect} from "react"
 import Layout from "./Layout";
-import Welcome from "../components/Welcome";
+import Welcome from "../../components/Welcome";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getWhoami } from "../features/authSlice";
+import { getWhoami } from "../../features/authSlice";
 
 const Dashboard = () => {
     const dispacth = useDispatch();
@@ -20,7 +20,9 @@ const Dashboard = () => {
         }
     }, [isError, navigate]);
   return (
-    <Layout><Welcome/></Layout>
+    <div>
+     <Layout><Welcome/></Layout>
+    </div>
   )
 }
 
