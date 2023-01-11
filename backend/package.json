@@ -11,8 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "argon": "^2.0.21",
     "argon2": "^0.30.3",
     "bcrypt": "^5.1.0",
+    "bulma": "^0.9.4",
     "connect-pg-simple": "^8.0.0",
     "connect-session-sequelize": "^7.1.5",
     "cors": "^2.8.5",

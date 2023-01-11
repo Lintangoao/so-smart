@@ -33,17 +33,11 @@ module.exports = {
     },
     getLaporanById: async(req, res, next) => {
         try {
-            const laporan = await Laporan.findOne({ where: {id: req.params.id }})
-            if (!laporan){
-                return res.status(404).json({
-                    message: "Data tidak ditemukan"
-                })
-            }
             let response;
             if(req.role === "admin"){
                 response = await Laporan.findOne({
-                    where :{
-                        userId: laporan.id
+                    where: {
+                        id: req.params.id 
                     },
                     attributes: {exclude: ["createdAt","updatedAt"]},
                     include:[{
@@ -54,7 +48,7 @@ module.exports = {
             }else{
                 response = await Laporan.findOne({ 
                     where :{
-                        [Op.and]:[{ id: laporan.id}, {userId: req.userId}]
+                        id: req.params.id, userId: req.userId
                     },
                     attributes: {exclude: ["createdAt","updatedAt"]},
                     include:[{
@@ -63,7 +57,12 @@ module.exports = {
                     }]
                 })
             }
-            return res.status(200).json(response)
+            if (!response){
+                return res.status(404).json({
+                    message: "Data tidak ditemukan"
+                })
+            }
+            return res.status(200).json(response);
         } catch(err) {
             next(err);
         }

@@ -1,6 +1,4 @@
 const { User } = require('../../db/models');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
 const argon = require('argon2');
 
 const {
@@ -10,13 +8,17 @@ const {
 module.exports = {
     getUser: async(req, res, next) => {
         try {
-            const user = await User.findAll({
-                attributes: ['id', 'uuid', 'name', 'email', 'role']
-            });
+            // const user = await User.findAll({});
 
-            res.status(200).json({
-                data: user
-            })
+            // res.status(200).json({
+            //     data: user
+            // })
+
+            let response = await User.findAll({
+                    attributes: {exclude: ["uuid","password","createdAt", "updatedAt"]}
+                })
+
+            return res.status(200).json(response);
         } catch(err) {
             next(err);
         }
@@ -91,12 +93,10 @@ module.exports = {
                     message: "User not found!"
                 })
             }
-            const { name, email, nik, address } = req.body;
+            const { name, address } = req.body;
             try {
                 await User.update({
                     name: name,
-                    email: email,
-                    nik: nik,
                     address: address,
                 },
                 {

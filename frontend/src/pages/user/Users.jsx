@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react'
-import Layout from './Layout'
-import FormAddUser from '../components/FormAddUser'
+import Layout from '../admin/Layout'
+import Userlist from '../../components/Userlist'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getWhoami } from "../features/authSlice";
+import { getWhoami } from "../../features/authSlice";
 
-const AddUser = () => {
+const Users = () => {
     const dispacth = useDispatch();
     const navigate = useNavigate();
-    const {isError, user } = useSelector((state => state.auth));
+    const {isError, user} = useSelector((state => state.auth));
 
     useEffect(()=> {
         dispacth(getWhoami());
@@ -24,9 +24,9 @@ const AddUser = () => {
     }, [isError, user, navigate]);
   return (
     <Layout>
-        <FormAddUser />
+        <Userlist />
     </Layout>
   )
 }
 
-export default AddUser
+export default Users
