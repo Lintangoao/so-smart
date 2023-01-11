@@ -1,4 +1,111 @@
-.hero .hero-body{
-    //background-image: url();
-    background-color: white;
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700|Bitter:400,700,900&display=swap");
+
+section {
+    width: 100%;
 }
+
+// .slider {
+//     background: url(".././banner.jpeg") no-repeat;
+//     background-size: cover;
+//     background-position: 10% 0%;
+//     padding: 247px 0;
+//     position: relative;
+//     border-bottom: 5px solid #52b788;
+// }
+
+
+// .block p {
+//     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//     font-style: bold;
+//     font-size: larger;
+//     text-align: center;
+//     border-bottom: 3px solid #52b788;
+    
+//     color: white;
+// }
+
+@media (max-width: 400px) {
+    .slider .block h1 {
+      font-size: 41px;
+      line-height: 57px;
+    }
+  }
+  @media (max-width: 400px) {
+    .slider .block h1 {
+      font-size: 28px;
+      line-height: 40px;
+    }
+    .slider {
+      padding: 126px 0 151px 0;
+    }
+  }
+  @media (max-width: 575px) {
+    .slider .block h1 {
+      font-size: 38px;
+      line-height: 50px;
+    }
+    .slider {
+      padding: 126px 0 151px 0;
+    }
+  }
+  @media (max-width: 768px) {
+    .slider .block h1 {
+      font-size: 56px;
+      line-height: 70px;
+    }
+  }
+
+.hero .slider .container {
+    width: 449px;
+}
+
+.hero .slider{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../../../public/assets/img/background-1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 250px;
+    border-bottom:4px solid #52b788;
+}
+
+
+.hero .subtitle {
+    border-bottom:2px solid #52b788;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+//tentang
+ .about .content {
+    margin-top: 20px;
+
+ }
+
+// informasi
+.block .mulai {
+    padding-top: 20px;
+}
+
+.blog-item-content h3 {
+    line-height: 36px;
+  }
+  .blog-item-content h3 a {
+    transition: all 0.4s ease 0s;
+  }
+  .blog-item-content h3 a:hover {
+    color: #f89d35 !important;
+  }
+  
+  .blog-item {
+    background: #fff;
+    transition: all 0.4s ease 0s;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .blog-item .card-body {
+    padding: 25px;
+  }
+  .blog-item:hover {
+    box-shadow: 0 0.3rem 0.5rem #52b788 !important;
+  }
+  
