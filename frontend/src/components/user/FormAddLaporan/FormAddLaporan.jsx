@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "./FormAddLaporan.scss";
 
 const FormAddLaporan = () => {
     const [type, setType] = useState("");
@@ -27,12 +28,26 @@ const FormAddLaporan = () => {
   return (
     <div>
         <div className="content">
-        <h1 className='title has-text-centered mt-10'>Laporan</h1>
-        <h2 className='subtitle has-text-centered'>Ayo Laporan!</h2>
+        <nav className="navbar" role="navigation" aria-label="main navigation">
+          <div className="navbar-brand">
+            <a className="navbar-item" href="https://bulma.io">
+              <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"/>
+            </a>
+        
+            <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+        </nav>
         <div className="card is-shadowless">
             <div className="card-content">
-                <div className="colummn is-4">
+                <div className="columns is-centered">
+                <div className="column is-4">
                 <form onSubmit={saveLaporan} className="box">
+                <h1 className='title has-text-centered mt-10'>Laporan</h1>
+                <h2 className='subtitle has-text-centered'>Ayo Laporan!</h2>
                     <p className="has-text-centered">{msg}</p>
                     <div className="field">
                         <label className="label">Jenis Laporan</label>
@@ -63,6 +78,7 @@ const FormAddLaporan = () => {
                         </div>
                     </div>
                 </form>  
+                </div>
                 </div>
             </div>
         </div>

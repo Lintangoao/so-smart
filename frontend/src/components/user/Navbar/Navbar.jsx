@@ -50,7 +50,6 @@ const Navbar = () => {
                 </div>
             </div>
             </div>
-
                 <div className="navbar-end">
                 <div className="navbar-item">
                         <div className="media-content mr-5">
@@ -64,7 +63,7 @@ const Navbar = () => {
                             <p className="control is-text-centered">
                                 <strong> 
                                     <NavLink className="control is-black" to="/users/profile">Hi</NavLink> , 
-                                     {user && user.name}
+                                    {user && user.name}
                                 </strong> 
                             </p>
                         </div>
