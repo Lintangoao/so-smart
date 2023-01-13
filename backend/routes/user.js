@@ -4,7 +4,7 @@ const { rbac } = require('../src/middlewares');
 
 const router = express.Router();
 
-router.get('/', rbac.cekUser ,con.user.getUser);
+router.get('/', rbac.cekAdmin ,con.user.getUser);
 router.get('/:id', rbac.cekAdmin, con.user.getUserById);
 router.post('/register', con.user.register);
 router.patch('/:id', rbac.cekUser, con.user.update);

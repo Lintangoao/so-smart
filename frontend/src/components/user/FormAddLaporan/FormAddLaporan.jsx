@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./FormAddLaporan.scss";
+import Swal from 'sweetalert2';
 
 const FormAddLaporan = () => {
-    const [type, setType] = useState("");
+    const [type, setType] = useState("Laporan Bulanan");
     const [content, setContent] = useState("");
     const [description, setDescription] = useState("");
     const [msg, setMsg] =useState("");
@@ -18,7 +19,15 @@ const FormAddLaporan = () => {
                 content: content,
                 description: description
             });
-            navigate("/laporan")
+            //navigate("/home")
+            Swal.fire({  
+                position: 'top-end',  
+                icon: 'success',  
+                title: 'Laporan berhasil dibuat',  
+                showConfirmButton: false,  
+                timer: 1500    
+              });
+            navigate("/laporan/add")  
         } catch (err){
             if (err.response) {
                 setMsg(err.response.data.msg);
@@ -40,8 +49,16 @@ const FormAddLaporan = () => {
               <span aria-hidden="true"></span>
             </a>
           </div>
+          <div className="navbar-end">
+                <div className="navbar-item">   
+                    <p className="control mt-10">
+                        <Link className="button" to="/home">Kembali</Link>
+                    </p>
+                </div>
+                </div>
+        
         </nav>
-            <div className="card is-shadowless">
+            <div className="card is-shadowless has-background-grey-lighter">
                 <div className="card-content">
                     <div className="columns is-centered">
                         <div className="column is-4">
@@ -62,7 +79,7 @@ const FormAddLaporan = () => {
                                 <div className="field">
                                     <label className="label">Isi</label>
                                     <div className="control">
-                                        <input type="text" className="input" value={content} onChange={(e) => setContent(e.target.value)} placeholder='Isi'/>
+                                        <textarea className="input" value={content} onChange={(e) => setContent(e.target.value)} placeholder='Isi' ></textarea>
                                     </div>
                                 </div>
                                 <div className="field">

@@ -24,6 +24,7 @@ export const LoginUser = createAsyncThunk("user/loginUser", async(user, thunkAPI
     }
 });
 
+
 export const getWhoami = createAsyncThunk("user/getWhoami", async(_, thunkAPI) => {
     try {
         const response = await axios.get('http://localhost:5000/auth/whoami');

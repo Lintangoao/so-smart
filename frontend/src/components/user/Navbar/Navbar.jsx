@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink , useNavigate} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { LogOut, reset } from "../../../features/authSlice"
+import {IoLogoInstagram} from "react-icons/io5";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import logo from "../../../SO-SMART.png";
 import "./Navbar.scss";
@@ -30,7 +31,7 @@ const Navbar = () => {
 
             <div className="navbar-menu">
                 <div className="navbar-start"> 
-                <NavLink className="navbar-item">
+                <NavLink to="#"className="navbar-item">
                     Beranda
                 </NavLink>
                 <NavLink className="navbar-item">
@@ -44,22 +45,19 @@ const Navbar = () => {
                     <NavLink to="/laporan/add" className="navbar-item">
                         Laporan
                     </NavLink>
-                    <NavLink to="/permohonan/create" className="navbar-item" href="https://bulma.io/documentation/overview/modifiers/">
-                        Permohonan
+                    <NavLink to="/permohonan/add" className="navbar-item" href="https://bulma.io/documentation/overview/modifiers/">
+                        Pengajuan
                     </NavLink>
                 </div>
             </div>
+            
             </div>
                 <div className="navbar-end">
+                    <div className="navbar-item has-text-link-white">
+                        <a href="https://www.instagram.com/pemdes_karangsoka/" ><IoLogoInstagram/></a>     
+                    </div>
                 <div className="navbar-item">
                         <div className="media-content mr-5">
-                            {/* <p className='control mr-5'>
-                                <button className="button is-centered is-small is-rounded ">
-                                    <span className="is-centered">
-                                        <FontAwesomeIcon icon="user" />
-                                    </span>
-                                </button>
-                            </p> */}
                             <p className="control is-text-centered">
                                 <strong> 
                                     <NavLink className="control is-black" to="/users/profile">Hi</NavLink> , 

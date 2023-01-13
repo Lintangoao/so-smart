@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LoginUser, reset} from "../../features/authSlice";
 import "bulma/css/bulma.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import "./Login.scss";
 
 const Loginn = () => {
     const [email, setEmail] = useState("");
@@ -64,6 +65,9 @@ const Loginn = () => {
                               <FontAwesomeIcon icon="key" />
                             </span>
                         </div>
+                    </div>
+                    <div>
+                      <p>Belum punya akun? <Link to="/register" className="has-text-primary">Register</Link></p>
                     </div>
                     <div className="field mt-5">
                        <button type='submit' className="button is-success is-fullwidth">

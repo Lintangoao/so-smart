@@ -1,6 +1,7 @@
 import React ,{useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const Laporanlist = () => {
     const [laporan, setLaporan] = useState([]);
@@ -15,14 +16,31 @@ const Laporanlist = () => {
     }
 
     const deleteLaporan = async (laporanId) => {
+        Swal.fire({  
+            title: 'Are you sure?',  
+            text: 'User will have Admin Privileges',  
+            icon: 'warning',  
+            showCancelButton: true,  
+            confirmButtonColor: '#3085d6',  
+            cancelButtonColor: '#d33',  
+            confirmButtonText: 'Yes!'  
+          });
+          // navigate(/ada) 
         await axios.delete(`http://localhost:5000/laporan/${laporanId}`);
         getLaporan();
+        Swal.fire({  
+            position: 'top-end',  
+            icon: 'success',  
+            title: 'Laporan berhasil dihapus',  
+            showConfirmButton: false,  
+            timer: 1500    
+          });
     }
+    
   return (
     <div>
         <h1 className="title">Laporan</h1>
         <h2 className="subtitle">Daftar Laporan</h2>
-        <Link to="/laporan/add" className="button is-primary mb-2">Buat Laporan</Link>
         <table className='table is-striped is-fullwidth'>
             <thead>
                 <tr>

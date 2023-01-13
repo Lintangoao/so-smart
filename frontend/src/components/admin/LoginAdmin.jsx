@@ -5,10 +5,10 @@ import { LoginUser, reset} from "../../features/authSlice";
 import "bulma/css/bulma.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const LoginAdmin = () => {
+const Loginn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [role] = useState("admin");
+    const [role] = useState("user");
     const dispacth = useDispatch();
     const navigate = useNavigate();
     const { user, isError, isSuccess, isLoading, message } = useSelector(
@@ -16,14 +16,17 @@ const LoginAdmin = () => {
     );
 
     useEffect(() => {
-        if (user || isSuccess) {
-            try {
-                if (role === "admin") {
-                    navigate("/dashboard")
-                } 
-            } catch (err) {
-            
-            }
+        if ((user && role === "user") || (isSuccess && role === "user" ) ) {
+            // try {
+            //     if (role === "user") {
+            //         navigate("/home")
+            //     } 
+            // } catch (err) {
+            //   if (err.response) {
+            //     setMsg(err.response.data.msg);
+            //   }
+            // }
+            navigate("/dashboard")
         }
         dispacth(reset());
     }, [role, user, isSuccess, dispacth, navigate]);
@@ -33,6 +36,7 @@ const LoginAdmin = () => {
         dispacth(LoginUser({email, password}));
     }
   return (
+    
     <section className="hero has-background-grey-light is-fullheight is-fullwidth">
       <div className="hero-body">
         <div className="container">
@@ -74,4 +78,4 @@ const LoginAdmin = () => {
   )
 }
 
-export default LoginAdmin
+export default Loginn

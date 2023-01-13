@@ -114,7 +114,7 @@ module.exports = {
             return res.status(200).json({
                 message: "Laporan berhasil diupdate!"
             })
-            return res.status(200).json(response)
+
         } catch(err) {
             next(err);
         }

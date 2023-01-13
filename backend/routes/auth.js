@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/whoami', con.auth.whoami);
 router.post('/login', con.auth.login);
-router.post('/loginAdmin',con.auth.loginAdmin, rbac.cekAdmin);
+router.post('/loginAdmin',con.auth.loginAdmin);
 router.delete('/logout', con.auth.logout);
 
 

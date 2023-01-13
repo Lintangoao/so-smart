@@ -5,6 +5,7 @@ import { store } from './app/store';
 import App from './App';
 import './components/FontAwesomeIcons'
 import "bulma/css/bulma.css";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 
 axios.defaults.withCredentials = true;

@@ -2,6 +2,7 @@ require('dotenv').config();
 const cors = require('cors');
 const session = require('express-session');
 const express = require('express');
+const FileUpload = require('express-fileupload'); 
 const Sequelizestore = require('connect-session-sequelize');
 const pgSession = require('connect-pg-simple')(session);
 const router = require('./routes');
@@ -53,6 +54,8 @@ app.use(cors({
 }));
 
 app.use(express.json());
+app.use(FileUpload());
+app.use(express.static("public"));
 
 app.use(router);
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import {NavLink, useNavigate} from 'react-router-dom'
-import logo from "../../logo.png"
 import { useDispatch} from 'react-redux';
 import { LogOut, reset } from "../../features/authSlice";
 
@@ -18,7 +17,9 @@ const Navbar = () => {
         <nav className="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
             <NavLink to="/dashboard" className="navbar-item">
-              <img src={logo} width="112" height="28" alt="logo"/>
+              <div className="logo has-text-white">
+                <h1>ADMIN</h1>
+              </div>
             </NavLink>
         
             <a href='!#' role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -27,33 +28,7 @@ const Navbar = () => {
               <span aria-hidden="true"></span>
             </a>
           </div>
-        
-          <div id="navbarBasicExample" className="navbar-menu">
-                <div className="navbar-start">
-                <NavLink className="navbar-item">
-                  Beranda
-                </NavLink>
-          
-                <NavLink className="navbar-item">
-                  Tentang
-                </NavLink>
-          
-                <div className="navbar-item has-dropdown is-hoverable">
-                  <NavLink className="navbar-link">
-                    Pelayanan
-                  </NavLink>
-          
-                  <div className="navbar-dropdown">
-                    <NavLink to="/laporan/add" className="navbar-item">
-                      Laporan
-                    </NavLink>
-                    <NavLink className="navbar-item">
-                      Permohonan
-                    </NavLink>
-                  </div>
-                </div>
-              </div>
-       
+              
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="buttons">
@@ -63,7 +38,6 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-          </div>
         </nav>
     </div>
 

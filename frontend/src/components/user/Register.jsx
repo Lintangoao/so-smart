@@ -9,7 +9,7 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [nik, setNik] = useState("");
     const [address, setAddress] = useState("");
-    const [gender, setGender] = useState("L");
+    const [gender, setGender] = useState("Laki-laki");
     const [role] = useState("user");
     const [setMessage] = useState("");
     const navigate = useNavigate();
@@ -41,6 +41,7 @@ const Register = () => {
           <div className="columns is-centered">
             <div className="column is-4">
             <form onSubmit={saveUser} className="box">
+              <h1 className='title is-4 has-text-centered'>Daftar</h1>
                   <div class="field">
                     <p class="control has-icons-left has-icons-right">
                       <input class="input" type="text" 
@@ -92,10 +93,10 @@ const Register = () => {
                       placeholder="Masukan alamat tempat tinggal ..."/>
                     </p>
                   </div>
-                  <div class="select is-loading">
+                  <div class="select">
                     <select value={gender} onChange={(e) => setGender(e.target.value)}>
-                      <option value="L">Laki-laki</option>
-                      <option value="P">Perempuan</option>
+                      <option value="Laki-laki">Laki-laki</option>
+                      <option value="Perempuan">Perempuan</option>
                     </select>
                   </div>
                   <div className="field mt-5">
